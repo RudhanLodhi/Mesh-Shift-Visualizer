@@ -113,6 +113,67 @@ h1 {
   line-height: 1.5;
 }
 
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.control-fields {
+  display: grid;
+  gap: 14px;
+}
+
+.control-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.control-input {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  font-size: 1rem;
+  background: #fffaf3;
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.control-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(228, 87, 46, 0.2);
+}
+
+.control-input.invalid {
+  border-color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+}
+
+.helper-text {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.helper-text.error {
+  color: #c0392b;
+}
+
+.mesh-meta {
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
 .mesh-panel {
   min-height: 420px;
   display: flex;
