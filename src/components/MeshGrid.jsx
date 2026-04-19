@@ -16,6 +16,7 @@ function MeshGrid({ stage, shiftData, inputsValid }) {
   const currentData = stageSets[stageIndex];
   const arrowMode = stageIndex === 1 ? 'row' : stageIndex === 2 ? 'col' : null;
   const gridStageClass = stageIndex === 1 ? 'stage-row' : stageIndex === 2 ? 'stage-col' : 'stage-initial';
+  const stagePill = stageIndex === 0 ? 'Initial' : `Stage ${stageIndex} of 2`;
 
   return (
     <section className="mesh-panel">
@@ -24,7 +25,7 @@ function MeshGrid({ stage, shiftData, inputsValid }) {
           <h2>Mesh Grid</h2>
           <p>{stageLabels[stageIndex]}</p>
         </div>
-        <div className="mesh-stage-pill">Stage {stageIndex} / 2</div>
+        <div className="mesh-stage-pill">{stagePill}</div>
       </div>
 
       <div className="mesh-grid-wrap">
