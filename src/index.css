@@ -181,6 +181,108 @@ h1 {
   gap: 16px;
 }
 
+.mesh-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mesh-header p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.mesh-stage-pill {
+  background: rgba(42, 157, 143, 0.15);
+  color: var(--accent-2);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.mesh-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.mesh-node {
+  background: #fff7eb;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 10px;
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mesh-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(44, 34, 24, 0.12);
+}
+
+.node-index {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.node-data {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.mesh-snapshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.mesh-snapshot {
+  background: #fffaf3;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mesh-snapshot.active {
+  border-color: rgba(42, 157, 143, 0.6);
+  box-shadow: 0 0 0 2px rgba(42, 157, 143, 0.15);
+}
+
+.snapshot-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.snapshot-grid {
+  display: grid;
+  gap: 4px;
+}
+
+.snapshot-cell {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 1px solid rgba(49, 35, 27, 0.1);
+}
+
 .mesh-placeholder {
   flex: 1;
   border-radius: 16px;

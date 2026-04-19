@@ -88,9 +88,7 @@ function App() {
           />
           <ComplexityPanel />
         </section>
-        <section className="mesh-panel">
-          <MeshGrid stage={stage} shiftData={shiftData} inputsValid={inputsValid} />
-        </section>
+        <MeshGrid stage={stage} shiftData={shiftData} inputsValid={inputsValid} />
       </main>
 
       <footer className="app-footer">
