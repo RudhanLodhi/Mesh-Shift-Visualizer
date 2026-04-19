@@ -98,7 +98,12 @@ function App() {
             onNextStage={handleNextStage}
             onResetStage={handleResetStage}
           />
-          <ComplexityPanel />
+          <ComplexityPanel
+            pValue={pValue}
+            qValue={qValue}
+            inputsValid={inputsValid}
+            shiftData={shiftData}
+          />
         </section>
         <MeshGrid stage={stage} shiftData={shiftData} inputsValid={inputsValid} />
       </main>
