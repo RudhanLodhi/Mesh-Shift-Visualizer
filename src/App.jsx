@@ -56,6 +56,14 @@ function App() {
     return computeShiftStages(pNumber, qNumber);
   }, [inputsValid, pNumber, qNumber]);
 
+  const handleNextStage = () => {
+    setStage((prevStage) => Math.min(prevStage + 1, 2));
+  };
+
+  const handleResetStage = () => {
+    setStage(0);
+  };
+
   useEffect(() => {
     setStage(0);
   }, [pValue, qValue]);
@@ -85,6 +93,10 @@ function App() {
             pError={pError}
             qError={qError}
             meshSize={meshSize}
+            stage={stage}
+            inputsValid={inputsValid}
+            onNextStage={handleNextStage}
+            onResetStage={handleResetStage}
           />
           <ComplexityPanel />
         </section>

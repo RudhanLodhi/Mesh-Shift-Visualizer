@@ -14,6 +14,8 @@ function MeshGrid({ stage, shiftData, inputsValid }) {
   const stageIndex = Math.min(Math.max(stage, 0), 2);
   const stageSets = [shiftData.initial, shiftData.afterRow, shiftData.afterColumn];
   const currentData = stageSets[stageIndex];
+  const arrowMode = stageIndex === 1 ? 'row' : stageIndex === 2 ? 'col' : null;
+  const gridStageClass = stageIndex === 1 ? 'stage-row' : stageIndex === 2 ? 'stage-col' : 'stage-initial';
 
   return (
     <section className="mesh-panel">
@@ -25,16 +27,44 @@ function MeshGrid({ stage, shiftData, inputsValid }) {
         <div className="mesh-stage-pill">Stage {stageIndex} / 2</div>
       </div>
 
-      <div
-        className="mesh-grid"
-        style={{ gridTemplateColumns: `repeat(${shiftData.size}, minmax(0, 1fr))` }}
-      >
-        {currentData.map((value, index) => (
-          <div className="mesh-node" key={index}>
-            <span className="node-index">Node {index}</span>
-            <span className="node-data">{value}</span>
-          </div>
-        ))}
+      <div className="mesh-grid-wrap">
+        <div
+          className={`mesh-grid ${gridStageClass}`}
+          style={{ gridTemplateColumns: `repeat(${shiftData.size}, minmax(0, 1fr))` }}
+        >
+          {currentData.map((value, index) => (
+            <div className="mesh-node" key={index}>
+              <span className="node-index">Node {index}</span>
+              <span className="node-data">{value}</span>
+            </div>
+          ))}
+        </div>
+        {arrowMode && (
+          <svg
+            className={`mesh-arrow ${arrowMode}`}
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <marker
+                id="arrowhead"
+                markerWidth="6"
+                markerHeight="6"
+                refX="5"
+                refY="3"
+                orient="auto"
+              >
+                <polygon points="0 0, 6 3, 0 6" fill="currentColor" />
+              </marker>
+            </defs>
+            {arrowMode === 'row' ? (
+              <line x1="8" y1="50" x2="92" y2="50" markerEnd="url(#arrowhead)" />
+            ) : (
+              <line x1="50" y1="8" x2="50" y2="92" markerEnd="url(#arrowhead)" />
+            )}
+          </svg>
+        )}
       </div>
 
       <div className="mesh-snapshots">

@@ -5,8 +5,16 @@ function ControlPanel({
   onQChange,
   pError,
   qError,
-  meshSize
+  meshSize,
+  stage,
+  inputsValid,
+  onNextStage,
+  onResetStage
 }) {
+  const stageLabel = stage === 0 ? 'Initial' : stage === 1 ? 'Row shift' : 'Column shift';
+  const nextDisabled = !inputsValid || stage >= 2;
+  const resetDisabled = !inputsValid || stage === 0;
+
   return (
     <section className="panel control-panel">
       <h2>Controls</h2>
@@ -61,6 +69,22 @@ function ControlPanel({
 
       <div className="mesh-meta">
         {meshSize ? `${meshSize} x ${meshSize} grid ready` : 'Awaiting valid mesh size'}
+      </div>
+
+      <div className="stage-controls">
+        <div className="stage-status">
+          <span className="stage-label">Current stage</span>
+          <strong>{stageLabel}</strong>
+        </div>
+        <div className="control-actions">
+          <button className="btn primary" type="button" onClick={onNextStage} disabled={nextDisabled}>
+            Next stage
+          </button>
+          <button className="btn ghost" type="button" onClick={onResetStage} disabled={resetDisabled}>
+            Reset
+          </button>
+        </div>
+        {!inputsValid && <p className="helper-text">Fix inputs to enable stage controls.</p>}
       </div>
     </section>
   );
